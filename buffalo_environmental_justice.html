@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d471d95f049356e4d7e40b46a8c7951a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div style="position: fixed; 
+                        top: 10px; 
+                        left: 50px; 
+                        width: 300px;
+                        height: auto;
+                        background-color: white;
+                        padding: 10px;
+                        border-radius: 5px;
+                        z-index: 1000;">
+                <h3>Buffalo Environmental Justice Map</h3>
+                <p>Click on neighborhoods to see detailed information</p>
+            </div>
+        
+    
+            <div class="folium-map" id="map_d471d95f049356e4d7e40b46a8c7951a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d471d95f049356e4d7e40b46a8c7951a = L.map(
+                "map_d471d95f049356e4d7e40b46a8c7951a",
+                {
+                    center: [42.8864, -78.8784],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a9e9e0f9698056ffd5fd9817a00c2eb2 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_a9e9e0f9698056ffd5fd9817a00c2eb2.addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+            var circle_marker_5ea2a0a9a607fe080464810f7a9f355a = L.circleMarker(
+                [42.8964, -78.8784],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff4700ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_f74dd464e35da2813fcf53ef78abdac0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e5c05e7494b743922244f5e005513b43 = $(`<div id="html_e5c05e7494b743922244f5e005513b43" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Allentown</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.485 µg/m³<br>                         Traffic Exposure: 2,736,689<br>                         Industrial Proximity: 1.392<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 55.9%<br>                         Low Income Population: 51.7%<br>                         Total Population: 10,271<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_f74dd464e35da2813fcf53ef78abdac0.setContent(html_e5c05e7494b743922244f5e005513b43);
+            
+        
+
+        circle_marker_5ea2a0a9a607fe080464810f7a9f355a.bindPopup(popup_f74dd464e35da2813fcf53ef78abdac0)
+        ;
+
+        
+    
+    
+            circle_marker_5ea2a0a9a607fe080464810f7a9f355a.bindTooltip(
+                `<div>
+                     Allentown
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3d53e4cd49fa226616f4b003d8d0c7f1 = L.circleMarker(
+                [42.9386, -78.8984],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff1c00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_d4e8acb2697a43abfb6fdef4980785b7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d23c9984d2338e104be5555e115893c4 = $(`<div id="html_d23c9984d2338e104be5555e115893c4" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Black Rock</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.582 µg/m³<br>                         Traffic Exposure: 2,408,237<br>                         Industrial Proximity: 0.496<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 25.3%<br>                         Low Income Population: 22.1%<br>                         Total Population: 82,597<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_d4e8acb2697a43abfb6fdef4980785b7.setContent(html_d23c9984d2338e104be5555e115893c4);
+            
+        
+
+        circle_marker_3d53e4cd49fa226616f4b003d8d0c7f1.bindPopup(popup_d4e8acb2697a43abfb6fdef4980785b7)
+        ;
+
+        
+    
+    
+            circle_marker_3d53e4cd49fa226616f4b003d8d0c7f1.bindTooltip(
+                `<div>
+                     Black Rock
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a2fcabe3426ce15fbc3406a7ef56a0fe = L.circleMarker(
+                [42.8936, -78.8384],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff1e00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_f10693e05c7c6f5e919e06d5614d40dd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a91183d372f3d54ab2bfdfaa0d87efb5 = $(`<div id="html_a91183d372f3d54ab2bfdfaa0d87efb5" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Broadway Fillmore</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.579 µg/m³<br>                         Traffic Exposure: 2,577,634<br>                         Industrial Proximity: 1.190<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 32.9%<br>                         Low Income Population: 35.6%<br>                         Total Population: 14,747<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_f10693e05c7c6f5e919e06d5614d40dd.setContent(html_a91183d372f3d54ab2bfdfaa0d87efb5);
+            
+        
+
+        circle_marker_a2fcabe3426ce15fbc3406a7ef56a0fe.bindPopup(popup_f10693e05c7c6f5e919e06d5614d40dd)
+        ;
+
+        
+    
+    
+            circle_marker_a2fcabe3426ce15fbc3406a7ef56a0fe.bindTooltip(
+                `<div>
+                     Broadway Fillmore
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_77be6ffa8bebdc624d19a129e7452887 = L.circleMarker(
+                [42.8864, -78.8784],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff6c00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_08b7dc23cc1735180df0e89963ce4f12 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9d6f68aa3651cecc3a5317d116f27af2 = $(`<div id="html_9d6f68aa3651cecc3a5317d116f27af2" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Central</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.401 µg/m³<br>                         Traffic Exposure: 2,058,915<br>                         Industrial Proximity: 1.389<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 18.8%<br>                         Low Income Population: 34.3%<br>                         Total Population: 30,527<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_08b7dc23cc1735180df0e89963ce4f12.setContent(html_9d6f68aa3651cecc3a5317d116f27af2);
+            
+        
+
+        circle_marker_77be6ffa8bebdc624d19a129e7452887.bindPopup(popup_08b7dc23cc1735180df0e89963ce4f12)
+        ;
+
+        
+    
+    
+            circle_marker_77be6ffa8bebdc624d19a129e7452887.bindTooltip(
+                `<div>
+                     Central
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2bf48587a15d03b6e2cf94bba367a57a = L.circleMarker(
+                [42.9286, -78.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff1000ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_95c8cde1fbcbf5ac4fd911a573b5f49b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1ac692f98aa27c1c0982d0d08a43c13b = $(`<div id="html_1ac692f98aa27c1c0982d0d08a43c13b" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Central Park</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.609 µg/m³<br>                         Traffic Exposure: 2,936,718<br>                         Industrial Proximity: 1.046<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 39.3%<br>                         Low Income Population: 44.1%<br>                         Total Population: 21,597<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_95c8cde1fbcbf5ac4fd911a573b5f49b.setContent(html_1ac692f98aa27c1c0982d0d08a43c13b);
+            
+        
+
+        circle_marker_2bf48587a15d03b6e2cf94bba367a57a.bindPopup(popup_95c8cde1fbcbf5ac4fd911a573b5f49b)
+        ;
+
+        
+    
+    
+            circle_marker_2bf48587a15d03b6e2cf94bba367a57a.bindTooltip(
+                `<div>
+                     Central Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_847efdfe814376198d6d0a68de473c04 = L.circleMarker(
+                [42.9186, -78.8284],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff2b00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_5e862ef330eb629c14c36119ae235bb0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7119dae5c0307720846468686d1a9da2 = $(`<div id="html_7119dae5c0307720846468686d1a9da2" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Delavan Grider</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.548 µg/m³<br>                         Traffic Exposure: 1,599,753<br>                         Industrial Proximity: 0.486<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 17.8%<br>                         Low Income Population: 15.8%<br>                         Total Population: 52,737<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_5e862ef330eb629c14c36119ae235bb0.setContent(html_7119dae5c0307720846468686d1a9da2);
+            
+        
+
+        circle_marker_847efdfe814376198d6d0a68de473c04.bindPopup(popup_5e862ef330eb629c14c36119ae235bb0)
+        ;
+
+        
+    
+    
+            circle_marker_847efdfe814376198d6d0a68de473c04.bindTooltip(
+                `<div>
+                     Delavan Grider
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a1a1b8ee63030cf2f35341b9088add1e = L.circleMarker(
+                [42.8914, -78.8684],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff4e00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_7fcafdd2d851ddbecfe661bfdef1d7a8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_388ab1f7f7d16e5fe1cf215a668f5e02 = $(`<div id="html_388ab1f7f7d16e5fe1cf215a668f5e02" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Ellicott</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.470 µg/m³<br>                         Traffic Exposure: 2,785,329<br>                         Industrial Proximity: 1.460<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 61.5%<br>                         Low Income Population: 61.6%<br>                         Total Population: 5,997<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_7fcafdd2d851ddbecfe661bfdef1d7a8.setContent(html_388ab1f7f7d16e5fe1cf215a668f5e02);
+            
+        
+
+        circle_marker_a1a1b8ee63030cf2f35341b9088add1e.bindPopup(popup_7fcafdd2d851ddbecfe661bfdef1d7a8)
+        ;
+
+        
+    
+    
+            circle_marker_a1a1b8ee63030cf2f35341b9088add1e.bindTooltip(
+                `<div>
+                     Ellicott
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_65b3deb45637faf96d51829635d5cac0 = L.circleMarker(
+                [42.912, -78.8814],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff1f00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_6160eda348dfd37923a7e8f350455d89 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fe472c27106729b353abcc467dae18fe = $(`<div id="html_fe472c27106729b353abcc467dae18fe" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Elmwood Bidwell</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.575 µg/m³<br>                         Traffic Exposure: 2,963,609<br>                         Industrial Proximity: 1.012<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 91.5%<br>                         Low Income Population: 61.9%<br>                         Total Population: 16,325<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_6160eda348dfd37923a7e8f350455d89.setContent(html_fe472c27106729b353abcc467dae18fe);
+            
+        
+
+        circle_marker_65b3deb45637faf96d51829635d5cac0.bindPopup(popup_6160eda348dfd37923a7e8f350455d89)
+        ;
+
+        
+    
+    
+            circle_marker_65b3deb45637faf96d51829635d5cac0.bindTooltip(
+                `<div>
+                     Elmwood Bidwell
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b9dee306aed6dd835a173a03ac7df3ef = L.circleMarker(
+                [42.922, -78.8814],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff1400ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_2cd39edbbb4187103bb4669a39d58283 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f1dc159de61167a84159d75e95c2ee59 = $(`<div id="html_f1dc159de61167a84159d75e95c2ee59" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Elmwood Bryant</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.600 µg/m³<br>                         Traffic Exposure: 3,091,865<br>                         Industrial Proximity: 0.901<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 75.6%<br>                         Low Income Population: 47.4%<br>                         Total Population: 28,166<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_2cd39edbbb4187103bb4669a39d58283.setContent(html_f1dc159de61167a84159d75e95c2ee59);
+            
+        
+
+        circle_marker_b9dee306aed6dd835a173a03ac7df3ef.bindPopup(popup_2cd39edbbb4187103bb4669a39d58283)
+        ;
+
+        
+    
+    
+            circle_marker_b9dee306aed6dd835a173a03ac7df3ef.bindTooltip(
+                `<div>
+                     Elmwood Bryant
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bd064ada7192f1c9508bd312f1bb61a6 = L.circleMarker(
+                [42.9086, -78.8384],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff2c00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_1abe4e437b42babc43fcebd4d635cff9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_95a5baeb149111c27338ac6bc8f9a493 = $(`<div id="html_95a5baeb149111c27338ac6bc8f9a493" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Fillmore-Leroy</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.546 µg/m³<br>                         Traffic Exposure: 2,638,295<br>                         Industrial Proximity: 1.436<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 44.6%<br>                         Low Income Population: 42.3%<br>                         Total Population: 27,343<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_1abe4e437b42babc43fcebd4d635cff9.setContent(html_95a5baeb149111c27338ac6bc8f9a493);
+            
+        
+
+        circle_marker_bd064ada7192f1c9508bd312f1bb61a6.bindPopup(popup_1abe4e437b42babc43fcebd4d635cff9)
+        ;
+
+        
+    
+    
+            circle_marker_bd064ada7192f1c9508bd312f1bb61a6.bindTooltip(
+                `<div>
+                     Fillmore-Leroy
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_711a6d38c80f084d3dd1f5ae2a7fbff2 = L.circleMarker(
+                [42.8986, -78.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe000ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_b3d6908bc91432cfb2c56b714242518f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_aefac46223b42a408d8bd38ed8bc7b3b = $(`<div id="html_aefac46223b42a408d8bd38ed8bc7b3b" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Fruit Belt</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.141 µg/m³<br>                         Traffic Exposure: 968,552<br>                         Industrial Proximity: 0.284<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 10.2%<br>                         Low Income Population: 25.2%<br>                         Total Population: 22,055<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_b3d6908bc91432cfb2c56b714242518f.setContent(html_aefac46223b42a408d8bd38ed8bc7b3b);
+            
+        
+
+        circle_marker_711a6d38c80f084d3dd1f5ae2a7fbff2.bindPopup(popup_b3d6908bc91432cfb2c56b714242518f)
+        ;
+
+        
+    
+    
+            circle_marker_711a6d38c80f084d3dd1f5ae2a7fbff2.bindTooltip(
+                `<div>
+                     Fruit Belt
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_530dde95e47d5efbde5838e8fe05d1b6 = L.circleMarker(
+                [42.9086, -78.8184],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c9ff00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_f933f31f5b0847daef91845ce37c55de = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cdaf8d3694cc170bee866387aff45516 = $(`<div id="html_cdaf8d3694cc170bee866387aff45516" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Genesee-Moselle</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 6.945 µg/m³<br>                         Traffic Exposure: 404,494<br>                         Industrial Proximity: 0.043<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 5.6%<br>                         Low Income Population: 12.9%<br>                         Total Population: 52,041<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_f933f31f5b0847daef91845ce37c55de.setContent(html_cdaf8d3694cc170bee866387aff45516);
+            
+        
+
+        circle_marker_530dde95e47d5efbde5838e8fe05d1b6.bindPopup(popup_f933f31f5b0847daef91845ce37c55de)
+        ;
+
+        
+    
+    
+            circle_marker_530dde95e47d5efbde5838e8fe05d1b6.bindTooltip(
+                `<div>
+                     Genesee-Moselle
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_aca5787dbf178339846828b1ab6ff2ea = L.circleMarker(
+                [42.9286, -78.8884],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c7ff00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_a57e801bcb91e8ba3141cd24b018b4f8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0c5e0d383eb1129235b156ba387f1558 = $(`<div id="html_0c5e0d383eb1129235b156ba387f1558" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Grant-Amherst</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 6.941 µg/m³<br>                         Traffic Exposure: 473,647<br>                         Industrial Proximity: 0.361<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 5.4%<br>                         Low Income Population: 14.8%<br>                         Total Population: 29,469<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_a57e801bcb91e8ba3141cd24b018b4f8.setContent(html_0c5e0d383eb1129235b156ba387f1558);
+            
+        
+
+        circle_marker_aca5787dbf178339846828b1ab6ff2ea.bindPopup(popup_a57e801bcb91e8ba3141cd24b018b4f8)
+        ;
+
+        
+    
+    
+            circle_marker_aca5787dbf178339846828b1ab6ff2ea.bindTooltip(
+                `<div>
+                     Grant-Amherst
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3a20ef42dc0ecb4391387facc5912cec = L.circleMarker(
+                [42.9186, -78.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff2000ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_eec71d4d64f5646701011aebb8e052f9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c5bb7572075d11b110c9eaaa12005183 = $(`<div id="html_c5bb7572075d11b110c9eaaa12005183" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Hamlin Park</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.574 µg/m³<br>                         Traffic Exposure: 1,815,984<br>                         Industrial Proximity: 1.539<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 32.6%<br>                         Low Income Population: 33.8%<br>                         Total Population: 30,257<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Below Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_eec71d4d64f5646701011aebb8e052f9.setContent(html_c5bb7572075d11b110c9eaaa12005183);
+            
+        
+
+        circle_marker_3a20ef42dc0ecb4391387facc5912cec.bindPopup(popup_eec71d4d64f5646701011aebb8e052f9)
+        ;
+
+        
+    
+    
+            circle_marker_3a20ef42dc0ecb4391387facc5912cec.bindTooltip(
+                `<div>
+                     Hamlin Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0fd6ae359558d2b6f79e085269d256e1 = L.circleMarker(
+                [42.8686, -78.8584],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffaf00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_68ada2ff53403271545499283c4adb0a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_63684343c04321e61ecabb2576b9e4eb = $(`<div id="html_63684343c04321e61ecabb2576b9e4eb" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Hopkins-Tifft</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.251 µg/m³<br>                         Traffic Exposure: 791,398<br>                         Industrial Proximity: 0.710<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 5.6%<br>                         Low Income Population: 17.2%<br>                         Total Population: 56,605<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_68ada2ff53403271545499283c4adb0a.setContent(html_63684343c04321e61ecabb2576b9e4eb);
+            
+        
+
+        circle_marker_0fd6ae359558d2b6f79e085269d256e1.bindPopup(popup_68ada2ff53403271545499283c4adb0a)
+        ;
+
+        
+    
+    
+            circle_marker_0fd6ae359558d2b6f79e085269d256e1.bindTooltip(
+                `<div>
+                     Hopkins-Tifft
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8ce9331615cab9ce768b6a0534086cb6 = L.circleMarker(
+                [42.8786, -78.8184],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#53ff00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_9a801464b6b8891da959fd2913905e65 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2cacca099ebc9cd5f3a9558113ee8fb2 = $(`<div id="html_2cacca099ebc9cd5f3a9558113ee8fb2" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Kaisertown</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 6.680 µg/m³<br>                         Traffic Exposure: 78,553<br>                         Industrial Proximity: 0.102<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 6.4%<br>                         Low Income Population: 24.4%<br>                         Total Population: 36,720<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_9a801464b6b8891da959fd2913905e65.setContent(html_2cacca099ebc9cd5f3a9558113ee8fb2);
+            
+        
+
+        circle_marker_8ce9331615cab9ce768b6a0534086cb6.bindPopup(popup_9a801464b6b8891da959fd2913905e65)
+        ;
+
+        
+    
+    
+            circle_marker_8ce9331615cab9ce768b6a0534086cb6.bindTooltip(
+                `<div>
+                     Kaisertown
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8c014604edd01b5046e64ba5a187fe3d = L.circleMarker(
+                [42.9286, -78.8084],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe300ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_6c1c12c144964e18008bc5aacea2ce05 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ea27fb6f102f8cb9c5e4ede748a6d8ee = $(`<div id="html_ea27fb6f102f8cb9c5e4ede748a6d8ee" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Kenfield</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.133 µg/m³<br>                         Traffic Exposure: 300,481<br>                         Industrial Proximity: 0.269<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 5.1%<br>                         Low Income Population: 16.3%<br>                         Total Population: 61,696<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_6c1c12c144964e18008bc5aacea2ce05.setContent(html_ea27fb6f102f8cb9c5e4ede748a6d8ee);
+            
+        
+
+        circle_marker_8c014604edd01b5046e64ba5a187fe3d.bindPopup(popup_6c1c12c144964e18008bc5aacea2ce05)
+        ;
+
+        
+    
+    
+            circle_marker_8c014604edd01b5046e64ba5a187fe3d.bindTooltip(
+                `<div>
+                     Kenfield
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_75413e73cc4706717552906cafe8c434 = L.circleMarker(
+                [42.9286, -78.8184],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_42f2a19097eb376ed15b950ace29fcbc = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3912c3a172b9413025056044e5600ed3 = $(`<div id="html_3912c3a172b9413025056044e5600ed3" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Kensington-Bailey</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.302 µg/m³<br>                         Traffic Exposure: 1,501,845<br>                         Industrial Proximity: 0.847<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 16.6%<br>                         Low Income Population: 46.3%<br>                         Total Population: 12,998<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_42f2a19097eb376ed15b950ace29fcbc.setContent(html_3912c3a172b9413025056044e5600ed3);
+            
+        
+
+        circle_marker_75413e73cc4706717552906cafe8c434.bindPopup(popup_42f2a19097eb376ed15b950ace29fcbc)
+        ;
+
+        
+    
+    
+            circle_marker_75413e73cc4706717552906cafe8c434.bindTooltip(
+                `<div>
+                     Kensington-Bailey
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d63b2ed09f0db141ba15485f8aa04e6b = L.circleMarker(
+                [42.8886, -78.8084],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00ff00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_6e98b1154d0677198c2be374c8a20d9f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e708c3bf5826d97c4fad73aa5a69b764 = $(`<div id="html_e708c3bf5826d97c4fad73aa5a69b764" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Lovejoy</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 6.491 µg/m³<br>                         Traffic Exposure: 35,066<br>                         Industrial Proximity: 0.016<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 6.2%<br>                         Low Income Population: 25.9%<br>                         Total Population: 13,976<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_6e98b1154d0677198c2be374c8a20d9f.setContent(html_e708c3bf5826d97c4fad73aa5a69b764);
+            
+        
+
+        circle_marker_d63b2ed09f0db141ba15485f8aa04e6b.bindPopup(popup_6e98b1154d0677198c2be374c8a20d9f)
+        ;
+
+        
+    
+    
+            circle_marker_d63b2ed09f0db141ba15485f8aa04e6b.bindTooltip(
+                `<div>
+                     Lovejoy
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_48802a7dc6dcd85d6bc8c60b4df6cd79 = L.circleMarker(
+                [42.8864, -78.8884],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff3c00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_0a5ea28845fefaeb5fb2ea6a3e79718f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_68c7aab27209655542a1a7fc829c7dcc = $(`<div id="html_68c7aab27209655542a1a7fc829c7dcc" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Lower West Side</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.511 µg/m³<br>                         Traffic Exposure: 2,774,189<br>                         Industrial Proximity: 1.309<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 53.5%<br>                         Low Income Population: 56.8%<br>                         Total Population: 10,043<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_0a5ea28845fefaeb5fb2ea6a3e79718f.setContent(html_68c7aab27209655542a1a7fc829c7dcc);
+            
+        
+
+        circle_marker_48802a7dc6dcd85d6bc8c60b4df6cd79.bindPopup(popup_0a5ea28845fefaeb5fb2ea6a3e79718f)
+        ;
+
+        
+    
+    
+            circle_marker_48802a7dc6dcd85d6bc8c60b4df6cd79.bindTooltip(
+                `<div>
+                     Lower West Side
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_540eb5ef5323866bd4f390c7d6f743dd = L.circleMarker(
+                [42.8986, -78.8384],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0800ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_11fc8a8b7cc9166a6b90234b77553a33 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_191cf9bbf3287328628b6bfa203b645b = $(`<div id="html_191cf9bbf3287328628b6bfa203b645b" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>MLK Park</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.628 µg/m³<br>                         Traffic Exposure: 2,254,810<br>                         Industrial Proximity: 0.765<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 14.6%<br>                         Low Income Population: 21.8%<br>                         Total Population: 48,539<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_11fc8a8b7cc9166a6b90234b77553a33.setContent(html_191cf9bbf3287328628b6bfa203b645b);
+            
+        
+
+        circle_marker_540eb5ef5323866bd4f390c7d6f743dd.bindPopup(popup_11fc8a8b7cc9166a6b90234b77553a33)
+        ;
+
+        
+    
+    
+            circle_marker_540eb5ef5323866bd4f390c7d6f743dd.bindTooltip(
+                `<div>
+                     MLK Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6637904b39ecdcd549ac0e8004f325a1 = L.circleMarker(
+                [42.9086, -78.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_e6831a57e09471b91f8d605e487dbc3f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9a5a793882e4978ca705c3b1bab2b0ce = $(`<div id="html_9a5a793882e4978ca705c3b1bab2b0ce" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Masten Park</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.647 µg/m³<br>                         Traffic Exposure: 2,298,091<br>                         Industrial Proximity: 1.067<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 15.1%<br>                         Low Income Population: 27.7%<br>                         Total Population: 24,099<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_e6831a57e09471b91f8d605e487dbc3f.setContent(html_9a5a793882e4978ca705c3b1bab2b0ce);
+            
+        
+
+        circle_marker_6637904b39ecdcd549ac0e8004f325a1.bindPopup(popup_e6831a57e09471b91f8d605e487dbc3f)
+        ;
+
+        
+    
+    
+            circle_marker_6637904b39ecdcd549ac0e8004f325a1.bindTooltip(
+                `<div>
+                     Masten Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c67190cfc59e858448c1b1ca32d244a3 = L.circleMarker(
+                [42.9486, -78.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0c00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_691ac95dd6e93ca89575be1823b46ade = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_50e8e9004ecd10c26897e23329a71bf6 = $(`<div id="html_50e8e9004ecd10c26897e23329a71bf6" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>North Park</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.619 µg/m³<br>                         Traffic Exposure: 2,726,076<br>                         Industrial Proximity: 1.013<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 41.4%<br>                         Low Income Population: 39.0%<br>                         Total Population: 23,519<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_691ac95dd6e93ca89575be1823b46ade.setContent(html_50e8e9004ecd10c26897e23329a71bf6);
+            
+        
+
+        circle_marker_c67190cfc59e858448c1b1ca32d244a3.bindPopup(popup_691ac95dd6e93ca89575be1823b46ade)
+        ;
+
+        
+    
+    
+            circle_marker_c67190cfc59e858448c1b1ca32d244a3.bindTooltip(
+                `<div>
+                     North Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bef2188b704256f1a7964fd82fd78808 = L.circleMarker(
+                [42.9386, -78.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0700ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_4c9f1b1d34f83fea39f9039146167e55 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a2056f8dab5e5c939b1841dff5f62e73 = $(`<div id="html_a2056f8dab5e5c939b1841dff5f62e73" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Parkside</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.631 µg/m³<br>                         Traffic Exposure: 2,467,119<br>                         Industrial Proximity: 1.285<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 61.7%<br>                         Low Income Population: 61.8%<br>                         Total Population: 21,562<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_4c9f1b1d34f83fea39f9039146167e55.setContent(html_a2056f8dab5e5c939b1841dff5f62e73);
+            
+        
+
+        circle_marker_bef2188b704256f1a7964fd82fd78808.bindPopup(popup_4c9f1b1d34f83fea39f9039146167e55)
+        ;
+
+        
+    
+    
+            circle_marker_bef2188b704256f1a7964fd82fd78808.bindTooltip(
+                `<div>
+                     Parkside
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e14fbf866ee02ed42491e33610873f89 = L.circleMarker(
+                [42.8936, -78.8484],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff5900ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_e2d0c6bf8da2ed5ea5b6c5ca9d935458 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_01a5435699df56510254d5f91269eb35 = $(`<div id="html_01a5435699df56510254d5f91269eb35" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Pratt-Willert</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.446 µg/m³<br>                         Traffic Exposure: 3,035,793<br>                         Industrial Proximity: 1.681<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 38.8%<br>                         Low Income Population: 51.2%<br>                         Total Population: 9,800<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_e2d0c6bf8da2ed5ea5b6c5ca9d935458.setContent(html_01a5435699df56510254d5f91269eb35);
+            
+        
+
+        circle_marker_e14fbf866ee02ed42491e33610873f89.bindPopup(popup_e2d0c6bf8da2ed5ea5b6c5ca9d935458)
+        ;
+
+        
+    
+    
+            circle_marker_e14fbf866ee02ed42491e33610873f89.bindTooltip(
+                `<div>
+                     Pratt-Willert
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6334beaea0157081bf5f2a85182929e4 = L.circleMarker(
+                [42.9486, -78.8984],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff4900ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_d0538fc658acb7b22dfed9bd44ab4650 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b6062c123860fd7bf3fb851d43e434e9 = $(`<div id="html_b6062c123860fd7bf3fb851d43e434e9" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Riverside</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.480 µg/m³<br>                         Traffic Exposure: 2,018,101<br>                         Industrial Proximity: 0.758<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 13.3%<br>                         Low Income Population: 27.5%<br>                         Total Population: 31,113<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_d0538fc658acb7b22dfed9bd44ab4650.setContent(html_b6062c123860fd7bf3fb851d43e434e9);
+            
+        
+
+        circle_marker_6334beaea0157081bf5f2a85182929e4.bindPopup(popup_d0538fc658acb7b22dfed9bd44ab4650)
+        ;
+
+        
+    
+    
+            circle_marker_6334beaea0157081bf5f2a85182929e4.bindTooltip(
+                `<div>
+                     Riverside
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_95bc2e594876454ec899933337edfe0e = L.circleMarker(
+                [42.9086, -78.8184],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff2d00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_cd6117f7a832125bf4cd297c0dcc18a3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ede67846b6100f4422e74354ee5a54e8 = $(`<div id="html_ede67846b6100f4422e74354ee5a54e8" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Schiller Park</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.544 µg/m³<br>                         Traffic Exposure: 3,072,346<br>                         Industrial Proximity: 1.187<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 70.1%<br>                         Low Income Population: 47.1%<br>                         Total Population: 15,963<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_cd6117f7a832125bf4cd297c0dcc18a3.setContent(html_ede67846b6100f4422e74354ee5a54e8);
+            
+        
+
+        circle_marker_95bc2e594876454ec899933337edfe0e.bindPopup(popup_cd6117f7a832125bf4cd297c0dcc18a3)
+        ;
+
+        
+    
+    
+            circle_marker_95bc2e594876454ec899933337edfe0e.bindTooltip(
+                `<div>
+                     Schiller Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e1ccbed171bf1ea170e82fa6973717e1 = L.circleMarker(
+                [42.8786, -78.8384],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff6100ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_d9a9162f3f31151f09cfbb9c2552948d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8b78e30c424fd4f105d159e3180a7097 = $(`<div id="html_8b78e30c424fd4f105d159e3180a7097" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Seneca Babcock</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.427 µg/m³<br>                         Traffic Exposure: 2,248,424<br>                         Industrial Proximity: 1.393<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 15.4%<br>                         Low Income Population: 24.2%<br>                         Total Population: 36,595<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_d9a9162f3f31151f09cfbb9c2552948d.setContent(html_8b78e30c424fd4f105d159e3180a7097);
+            
+        
+
+        circle_marker_e1ccbed171bf1ea170e82fa6973717e1.bindPopup(popup_d9a9162f3f31151f09cfbb9c2552948d)
+        ;
+
+        
+    
+    
+            circle_marker_e1ccbed171bf1ea170e82fa6973717e1.bindTooltip(
+                `<div>
+                     Seneca Babcock
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7fa9a0481d5e17840d21eb5784c11ac2 = L.circleMarker(
+                [42.8686, -78.8284],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7300ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_00022f4c10d69f791871f2fb602da3c5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_26f7f598748ce1c7acbde8806dc9e98b = $(`<div id="html_26f7f598748ce1c7acbde8806dc9e98b" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Seneca-Cazenovia</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.386 µg/m³<br>                         Traffic Exposure: 2,491,192<br>                         Industrial Proximity: 1.739<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 8.1%<br>                         Low Income Population: 26.3%<br>                         Total Population: 17,107<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_00022f4c10d69f791871f2fb602da3c5.setContent(html_26f7f598748ce1c7acbde8806dc9e98b);
+            
+        
+
+        circle_marker_7fa9a0481d5e17840d21eb5784c11ac2.bindPopup(popup_00022f4c10d69f791871f2fb602da3c5)
+        ;
+
+        
+    
+    
+            circle_marker_7fa9a0481d5e17840d21eb5784c11ac2.bindTooltip(
+                `<div>
+                     Seneca-Cazenovia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_91fb78ac0606e9ff5aaf1de27a6c031c = L.circleMarker(
+                [42.8486, -78.8584],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff1e00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_d1e90138479a6998b71bd0673fa7acd1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_eba609d0d5bf1c68ec104bae3f38a425 = $(`<div id="html_eba609d0d5bf1c68ec104bae3f38a425" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>South Park</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.578 µg/m³<br>                         Traffic Exposure: 3,256,781<br>                         Industrial Proximity: 0.831<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 39.6%<br>                         Low Income Population: 32.9%<br>                         Total Population: 26,525<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_d1e90138479a6998b71bd0673fa7acd1.setContent(html_eba609d0d5bf1c68ec104bae3f38a425);
+            
+        
+
+        circle_marker_91fb78ac0606e9ff5aaf1de27a6c031c.bindPopup(popup_d1e90138479a6998b71bd0673fa7acd1)
+        ;
+
+        
+    
+    
+            circle_marker_91fb78ac0606e9ff5aaf1de27a6c031c.bindTooltip(
+                `<div>
+                     South Park
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_57dc21d2c380034a2506d0cfd54fc5cf = L.circleMarker(
+                [42.9486, -78.8184],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9f00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_8f2cba550078f3eb8716e931ddca60b8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b9ffc86bf43f1944b6ab56e99f20bf48 = $(`<div id="html_b9ffc86bf43f1944b6ab56e99f20bf48" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>University Heights</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.286 µg/m³<br>                         Traffic Exposure: 1,539,329<br>                         Industrial Proximity: 1.268<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 7.6%<br>                         Low Income Population: 15.5%<br>                         Total Population: 23,407<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_8f2cba550078f3eb8716e931ddca60b8.setContent(html_b9ffc86bf43f1944b6ab56e99f20bf48);
+            
+        
+
+        circle_marker_57dc21d2c380034a2506d0cfd54fc5cf.bindPopup(popup_8f2cba550078f3eb8716e931ddca60b8)
+        ;
+
+        
+    
+    
+            circle_marker_57dc21d2c380034a2506d0cfd54fc5cf.bindTooltip(
+                `<div>
+                     University Heights
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fef44b8c14c648d8b8d58cc9bc70cf36 = L.circleMarker(
+                [42.9286, -78.8884],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff3200ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_f67ac67cf2f9a2614e953755bd4a9da6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5cf42c036017eb7aae280809efb00e7d = $(`<div id="html_5cf42c036017eb7aae280809efb00e7d" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>Upper West Side</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.533 µg/m³<br>                         Traffic Exposure: 2,716,852<br>                         Industrial Proximity: 1.136<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 86.5%<br>                         Low Income Population: 74.8%<br>                         Total Population: 11,763<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_f67ac67cf2f9a2614e953755bd4a9da6.setContent(html_5cf42c036017eb7aae280809efb00e7d);
+            
+        
+
+        circle_marker_fef44b8c14c648d8b8d58cc9bc70cf36.bindPopup(popup_f67ac67cf2f9a2614e953755bd4a9da6)
+        ;
+
+        
+    
+    
+            circle_marker_fef44b8c14c648d8b8d58cc9bc70cf36.bindTooltip(
+                `<div>
+                     Upper West Side
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7ec76ad385fe7caddbe40a6e8c12c1a1 = L.circleMarker(
+                [42.9486, -78.8784],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffba00ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_2cedf9078a166702901fdfd64dabf5e6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_93e2c813e0c91167ab49dde0eebff582 = $(`<div id="html_93e2c813e0c91167ab49dde0eebff582" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>West Hertel</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.227 µg/m³<br>                         Traffic Exposure: 1,380,881<br>                         Industrial Proximity: 0.818<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 29.0%<br>                         Low Income Population: 43.3%<br>                         Total Population: 23,019<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Below Average<br>                         Traffic: Below Average<br>                         Industrial: Below Average                     </div>                 </div>`)[0];
+                popup_2cedf9078a166702901fdfd64dabf5e6.setContent(html_93e2c813e0c91167ab49dde0eebff582);
+            
+        
+
+        circle_marker_7ec76ad385fe7caddbe40a6e8c12c1a1.bindPopup(popup_2cedf9078a166702901fdfd64dabf5e6)
+        ;
+
+        
+    
+    
+            circle_marker_7ec76ad385fe7caddbe40a6e8c12c1a1.bindTooltip(
+                `<div>
+                     West Hertel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f7740913fa76c2d15060827fdd6fd577 = L.circleMarker(
+                [42.9145, -78.8984],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff2900ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+        
+    
+        var popup_0947e8e6e4eb09fc4ba04fc3bc850174 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_726c738e0217a9c4cfaaa66b46fab280 = $(`<div id="html_726c738e0217a9c4cfaaa66b46fab280" style="width: 100.0%; height: 100.0%;">                     <div style="font-family: Arial; min-width: 200px;">                         <h3>West Side</h3>                         <b>Environmental Indicators:</b><br>                         PM2.5: 7.554 µg/m³<br>                         Traffic Exposure: 3,172,212<br>                         Industrial Proximity: 1.153<br>                         <br>                         <b>Demographics:</b><br>                         Minority Population: 91.2%<br>                         Low Income Population: 49.6%<br>                         Total Population: 15,636<br>                         <br>                         <b>Comparison to Citywide:</b><br>                         PM2.5: Above Average<br>                         Traffic: Above Average<br>                         Industrial: Above Average                     </div>                 </div>`)[0];
+                popup_0947e8e6e4eb09fc4ba04fc3bc850174.setContent(html_726c738e0217a9c4cfaaa66b46fab280);
+            
+        
+
+        circle_marker_f7740913fa76c2d15060827fdd6fd577.bindPopup(popup_0947e8e6e4eb09fc4ba04fc3bc850174)
+        ;
+
+        
+    
+    
+            circle_marker_f7740913fa76c2d15060827fdd6fd577.bindTooltip(
+                `<div>
+                     West Side
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+    var color_map_1a464cb04101f961ea550ac13ee14d95 = {};
+
+    
+    color_map_1a464cb04101f961ea550ac13ee14d95.color = d3.scale.threshold()
+              .domain([6.491, 6.493316633266533, 6.495633266533066, 6.497949899799599, 6.500266533066132, 6.502583166332665, 6.504899799599198, 6.507216432865731, 6.509533066132264, 6.511849699398797, 6.51416633266533, 6.516482965931863, 6.518799599198396, 6.521116232464929, 6.523432865731462, 6.525749498997996, 6.528066132264529, 6.530382765531062, 6.532699398797595, 6.535016032064128, 6.537332665330661, 6.539649298597194, 6.541965931863727, 6.54428256513026, 6.546599198396793, 6.548915831663327, 6.55123246492986, 6.553549098196393, 6.555865731462926, 6.558182364729459, 6.560498997995992, 6.5628156312625245, 6.5651322645290575, 6.5674488977955905, 6.569765531062124, 6.572082164328657, 6.57439879759519, 6.576715430861723, 6.579032064128256, 6.581348697394789, 6.583665330661322, 6.585981963927855, 6.588298597194388, 6.590615230460921, 6.592931863727455, 6.595248496993988, 6.597565130260521, 6.599881763527054, 6.602198396793587, 6.60451503006012, 6.606831663326653, 6.609148296593186, 6.611464929859719, 6.613781563126253, 6.616098196392786, 6.618414829659319, 6.620731462925852, 6.6230480961923845, 6.6253647294589175, 6.6276813627254505, 6.6299979959919835, 6.6323146292585164, 6.634631262525049, 6.636947895791583, 6.639264529058116, 6.641581162324649, 6.643897795591182, 6.646214428857715, 6.648531062124248, 6.650847695390781, 6.653164328657314, 6.655480961923847, 6.657797595190381, 6.660114228456914, 6.662430861723447, 6.66474749498998, 6.667064128256513, 6.669380761523046, 6.671697394789579, 6.674014028056112, 6.676330661322645, 6.678647294589178, 6.680963927855712, 6.683280561122245, 6.6855971943887775, 6.6879138276553105, 6.6902304609218435, 6.6925470941883765, 6.694863727454909, 6.697180360721442, 6.699496993987975, 6.701813627254509, 6.704130260521042, 6.706446893787575, 6.708763527054108, 6.711080160320641, 6.713396793587174, 6.715713426853707, 6.71803006012024, 6.720346693386773, 6.722663326653306, 6.72497995991984, 6.727296593186373, 6.729613226452906, 6.731929859719439, 6.734246492985972, 6.736563126252505, 6.738879759519038, 6.741196392785571, 6.743513026052104, 6.7458296593186375, 6.7481462925851705, 6.7504629258517035, 6.7527795591182365, 6.755096192384769, 6.757412825651302, 6.759729458917835, 6.762046092184368, 6.764362725450901, 6.766679358717434, 6.768995991983968, 6.771312625250501, 6.773629258517034, 6.775945891783567, 6.7782625250501, 6.780579158316633, 6.782895791583166, 6.785212424849699, 6.787529058116232, 6.789845691382765, 6.792162324649299, 6.794478957915832, 6.796795591182365, 6.799112224448898, 6.801428857715431, 6.803745490981964, 6.806062124248497, 6.80837875751503, 6.810695390781563, 6.813012024048096, 6.8153286573146294, 6.817645290581162, 6.819961923847695, 6.822278557114228, 6.824595190380761, 6.826911823647294, 6.829228456913827, 6.83154509018036, 6.833861723446893, 6.836178356713427, 6.83849498997996, 6.840811623246493, 6.843128256513026, 6.845444889779559, 6.847761523046092, 6.850078156312625, 6.852394789579158, 6.854711422845691, 6.857028056112224, 6.859344689378758, 6.861661322645291, 6.863977955911824, 6.866294589178357, 6.86861122244489, 6.870927855711423, 6.873244488977956, 6.875561122244489, 6.8778777555110215, 6.880194388777555, 6.882511022044088, 6.884827655310621, 6.887144288577154, 6.889460921843687, 6.89177755511022, 6.894094188376753, 6.896410821643286, 6.898727454909819, 6.901044088176352, 6.903360721442886, 6.905677354709419, 6.907993987975952, 6.910310621242485, 6.912627254509018, 6.914943887775551, 6.917260521042084, 6.919577154308617, 6.92189378757515, 6.924210420841684, 6.926527054108217, 6.92884368737475, 6.931160320641283, 6.933476953907816, 6.935793587174349, 6.9381102204408815, 6.9404268537074145, 6.9427434869739475, 6.9450601202404805, 6.9473767535070134, 6.949693386773547, 6.95201002004008, 6.954326653306613, 6.956643286573146, 6.958959919839679, 6.961276553106212, 6.963593186372745, 6.965909819639278, 6.968226452905811, 6.970543086172345, 6.972859719438878, 6.975176352705411, 6.977492985971944, 6.979809619238477, 6.98212625250501, 6.984442885771543, 6.986759519038076, 6.989076152304609, 6.991392785571142, 6.993709418837676, 6.996026052104209, 6.998342685370742, 7.0006593186372745, 7.0029759519038075, 7.0052925851703405, 7.0076092184368735, 7.009925851703406, 7.01224248496994, 7.014559118236473, 7.016875751503006, 7.019192384769539, 7.021509018036072, 7.023825651302605, 7.026142284569138, 7.028458917835671, 7.030775551102204, 7.033092184368737, 7.03540881763527, 7.037725450901804, 7.040042084168337, 7.04235871743487, 7.044675350701403, 7.046991983967936, 7.049308617234469, 7.051625250501002, 7.053941883767535, 7.056258517034068, 7.058575150300602, 7.0608917835671345, 7.0632084168336675, 7.0655250501002005, 7.0678416833667335, 7.070158316633266, 7.072474949899799, 7.074791583166332, 7.077108216432865, 7.079424849699398, 7.081741482965931, 7.084058116232465, 7.086374749498998, 7.088691382765531, 7.091008016032064, 7.093324649298597, 7.09564128256513, 7.097957915831663, 7.100274549098196, 7.10259118236473, 7.104907815631263, 7.107224448897796, 7.109541082164329, 7.111857715430862, 7.114174348697395, 7.116490981963928, 7.118807615230461, 7.121124248496994, 7.123440881763527, 7.12575751503006, 7.1280741482965935, 7.1303907815631264, 7.132707414829659, 7.135024048096192, 7.137340681362725, 7.139657314629258, 7.141973947895791, 7.144290581162325, 7.146607214428857, 7.148923847695391, 7.151240480961924, 7.153557114228457, 7.15587374749499, 7.158190380761523, 7.160507014028056, 7.162823647294589, 7.165140280561122, 7.167456913827655, 7.169773547094189, 7.172090180360722, 7.174406813627255, 7.176723446893788, 7.179040080160321, 7.181356713426854, 7.183673346693387, 7.18598997995992, 7.188306613226453, 7.1906232464929865, 7.192939879759519, 7.195256513026052, 7.197573146292585, 7.199889779559118, 7.202206412825651, 7.204523046092184, 7.206839679358717, 7.20915631262525, 7.211472945891783, 7.213789579158316, 7.21610621242485, 7.218422845691383, 7.220739478957916, 7.223056112224449, 7.225372745490982, 7.227689378757515, 7.230006012024048, 7.232322645290581, 7.234639278557115, 7.236955911823648, 7.239272545090181, 7.241589178356714, 7.243905811623247, 7.24622244488978, 7.248539078156313, 7.250855711422846, 7.2531723446893785, 7.2554889779559115, 7.2578056112224445, 7.260122244488978, 7.262438877755511, 7.264755511022044, 7.267072144288577, 7.26938877755511, 7.271705410821643, 7.274022044088176, 7.276338677354709, 7.278655310621242, 7.280971943887776, 7.283288577154309, 7.285605210420842, 7.287921843687375, 7.290238476953908, 7.292555110220441, 7.294871743486974, 7.297188376753507, 7.29950501002004, 7.301821643286573, 7.304138276553107, 7.30645490981964, 7.308771543086173, 7.311088176352706, 7.3134048096192386, 7.3157214428857715, 7.3180380761523045, 7.3203547094188375, 7.3226713426853705, 7.324987975951904, 7.327304609218437, 7.32962124248497, 7.331937875751503, 7.334254509018036, 7.336571142284569, 7.338887775551102, 7.341204408817635, 7.343521042084168, 7.345837675350701, 7.348154308617234, 7.350470941883768, 7.352787575150301, 7.355104208416834, 7.357420841683367, 7.3597374749499, 7.362054108216433, 7.364370741482966, 7.3666873747495, 7.369004008016032, 7.371320641282566, 7.373637274549099, 7.3759539078156315, 7.3782705410821645, 7.3805871743486975, 7.3829038076152305, 7.385220440881763, 7.387537074148296, 7.389853707414829, 7.392170340681363, 7.394486973947896, 7.396803607214429, 7.399120240480962, 7.401436873747495, 7.403753507014028, 7.406070140280561, 7.408386773547094, 7.410703406813627, 7.413020040080161, 7.415336673346694, 7.417653306613227, 7.41996993987976, 7.422286573146293, 7.424603206412826, 7.426919839679359, 7.429236472945892, 7.431553106212425, 7.433869739478958, 7.436186372745491, 7.4385030060120245, 7.4408196392785575, 7.4431362725450905, 7.4454529058116234, 7.447769539078156, 7.450086172344689, 7.452402805611222, 7.454719438877755, 7.457036072144289, 7.459352705410822, 7.461669338677355, 7.463985971943888, 7.466302605210421, 7.468619238476954, 7.470935871743487, 7.47325250501002, 7.475569138276553, 7.477885771543086, 7.480202404809619, 7.482519038076153, 7.484835671342686, 7.487152304609219, 7.489468937875752, 7.491785571142285, 7.494102204408818, 7.496418837675351, 7.498735470941884, 7.5010521042084175, 7.5033687374749505, 7.5056853707414835, 7.508002004008016, 7.510318637274549, 7.512635270541082, 7.514951903807615, 7.517268537074148, 7.519585170340681, 7.521901803607214, 7.524218436873747, 7.526535070140281, 7.528851703406814, 7.531168336673347, 7.53348496993988, 7.535801603206413, 7.538118236472946, 7.540434869739479, 7.542751503006013, 7.545068136272545, 7.547384769539079, 7.549701402805612, 7.552018036072145, 7.554334669338678, 7.556651302605211, 7.558967935871744, 7.561284569138277, 7.56360120240481, 7.565917835671343, 7.5682344689378755, 7.5705511022044085, 7.572867735470942, 7.575184368737475, 7.577501002004008, 7.579817635270541, 7.582134268537074, 7.584450901803607, 7.58676753507014, 7.589084168336674, 7.591400801603207, 7.59371743486974, 7.596034068136273, 7.598350701402806, 7.600667334669339, 7.602983967935872, 7.605300601202405, 7.607617234468938, 7.609933867735471, 7.612250501002004, 7.614567134268537, 7.61688376753507, 7.619200400801604, 7.621517034068137, 7.62383366733467, 7.626150300601203, 7.6284669338677356, 7.6307835671342685, 7.6331002004008015, 7.635416833667335, 7.637733466933868, 7.640050100200401, 7.642366733466934, 7.644683366733467, 7.647])
+              .range(['#00ff00ff', '#01ff00ff', '#02ff00ff', '#03ff00ff', '#04ff00ff', '#05ff00ff', '#06ff00ff', '#07ff00ff', '#08ff00ff', '#09ff00ff', '#0aff00ff', '#0bff00ff', '#0cff00ff', '#0dff00ff', '#0eff00ff', '#0fff00ff', '#10ff00ff', '#11ff00ff', '#12ff00ff', '#13ff00ff', '#14ff00ff', '#15ff00ff', '#16ff00ff', '#17ff00ff', '#18ff00ff', '#19ff00ff', '#1aff00ff', '#1bff00ff', '#1cff00ff', '#1dff00ff', '#1eff00ff', '#1fff00ff', '#20ff00ff', '#21ff00ff', '#22ff00ff', '#23ff00ff', '#24ff00ff', '#25ff00ff', '#26ff00ff', '#28ff00ff', '#29ff00ff', '#2aff00ff', '#2bff00ff', '#2cff00ff', '#2dff00ff', '#2eff00ff', '#2fff00ff', '#30ff00ff', '#31ff00ff', '#32ff00ff', '#33ff00ff', '#34ff00ff', '#35ff00ff', '#36ff00ff', '#37ff00ff', '#38ff00ff', '#39ff00ff', '#3aff00ff', '#3bff00ff', '#3cff00ff', '#3dff00ff', '#3eff00ff', '#3fff00ff', '#40ff00ff', '#41ff00ff', '#42ff00ff', '#43ff00ff', '#44ff00ff', '#45ff00ff', '#46ff00ff', '#47ff00ff', '#48ff00ff', '#49ff00ff', '#4aff00ff', '#4bff00ff', '#4cff00ff', '#4dff00ff', '#4fff00ff', '#50ff00ff', '#51ff00ff', '#52ff00ff', '#53ff00ff', '#54ff00ff', '#55ff00ff', '#56ff00ff', '#57ff00ff', '#58ff00ff', '#59ff00ff', '#5aff00ff', '#5bff00ff', '#5cff00ff', '#5dff00ff', '#5eff00ff', '#5fff00ff', '#60ff00ff', '#61ff00ff', '#62ff00ff', '#63ff00ff', '#64ff00ff', '#65ff00ff', '#66ff00ff', '#67ff00ff', '#68ff00ff', '#69ff00ff', '#6aff00ff', '#6bff00ff', '#6cff00ff', '#6dff00ff', '#6eff00ff', '#6fff00ff', '#70ff00ff', '#71ff00ff', '#72ff00ff', '#73ff00ff', '#74ff00ff', '#75ff00ff', '#77ff00ff', '#78ff00ff', '#79ff00ff', '#7aff00ff', '#7bff00ff', '#7cff00ff', '#7dff00ff', '#7eff00ff', '#7fff00ff', '#80ff00ff', '#81ff00ff', '#82ff00ff', '#83ff00ff', '#84ff00ff', '#85ff00ff', '#86ff00ff', '#87ff00ff', '#88ff00ff', '#89ff00ff', '#8aff00ff', '#8bff00ff', '#8cff00ff', '#8dff00ff', '#8eff00ff', '#8fff00ff', '#90ff00ff', '#91ff00ff', '#92ff00ff', '#93ff00ff', '#94ff00ff', '#95ff00ff', '#96ff00ff', '#97ff00ff', '#98ff00ff', '#99ff00ff', '#9aff00ff', '#9bff00ff', '#9cff00ff', '#9eff00ff', '#9fff00ff', '#a0ff00ff', '#a1ff00ff', '#a2ff00ff', '#a3ff00ff', '#a4ff00ff', '#a5ff00ff', '#a6ff00ff', '#a7ff00ff', '#a8ff00ff', '#a9ff00ff', '#aaff00ff', '#abff00ff', '#acff00ff', '#adff00ff', '#aeff00ff', '#afff00ff', '#b0ff00ff', '#b1ff00ff', '#b2ff00ff', '#b3ff00ff', '#b4ff00ff', '#b5ff00ff', '#b6ff00ff', '#b7ff00ff', '#b8ff00ff', '#b9ff00ff', '#baff00ff', '#bbff00ff', '#bcff00ff', '#bdff00ff', '#beff00ff', '#bfff00ff', '#c0ff00ff', '#c1ff00ff', '#c2ff00ff', '#c3ff00ff', '#c5ff00ff', '#c6ff00ff', '#c7ff00ff', '#c8ff00ff', '#c9ff00ff', '#caff00ff', '#cbff00ff', '#ccff00ff', '#cdff00ff', '#ceff00ff', '#cfff00ff', '#d0ff00ff', '#d1ff00ff', '#d2ff00ff', '#d3ff00ff', '#d4ff00ff', '#d5ff00ff', '#d6ff00ff', '#d7ff00ff', '#d8ff00ff', '#d9ff00ff', '#daff00ff', '#dbff00ff', '#dcff00ff', '#ddff00ff', '#deff00ff', '#dfff00ff', '#e0ff00ff', '#e1ff00ff', '#e2ff00ff', '#e3ff00ff', '#e4ff00ff', '#e5ff00ff', '#e6ff00ff', '#e7ff00ff', '#e8ff00ff', '#e9ff00ff', '#eaff00ff', '#ebff00ff', '#edff00ff', '#eeff00ff', '#efff00ff', '#f0ff00ff', '#f1ff00ff', '#f2ff00ff', '#f3ff00ff', '#f4ff00ff', '#f5ff00ff', '#f6ff00ff', '#f7ff00ff', '#f8ff00ff', '#f9ff00ff', '#faff00ff', '#fbff00ff', '#fcff00ff', '#fdff00ff', '#feff00ff', '#ffff00ff', '#ffff00ff', '#fffe00ff', '#fffd00ff', '#fffc00ff', '#fffb00ff', '#fffa00ff', '#fff900ff', '#fff800ff', '#fff700ff', '#fff600ff', '#fff500ff', '#fff400ff', '#fff300ff', '#fff200ff', '#fff100ff', '#fff000ff', '#ffef00ff', '#ffee00ff', '#ffed00ff', '#ffeb00ff', '#ffea00ff', '#ffe900ff', '#ffe800ff', '#ffe700ff', '#ffe600ff', '#ffe500ff', '#ffe400ff', '#ffe300ff', '#ffe200ff', '#ffe100ff', '#ffe000ff', '#ffdf00ff', '#ffde00ff', '#ffdd00ff', '#ffdc00ff', '#ffdb00ff', '#ffda00ff', '#ffd900ff', '#ffd800ff', '#ffd700ff', '#ffd600ff', '#ffd500ff', '#ffd400ff', '#ffd300ff', '#ffd200ff', '#ffd100ff', '#ffd000ff', '#ffcf00ff', '#ffce00ff', '#ffcd00ff', '#ffcc00ff', '#ffcb00ff', '#ffca00ff', '#ffc900ff', '#ffc800ff', '#ffc700ff', '#ffc600ff', '#ffc500ff', '#ffc300ff', '#ffc200ff', '#ffc100ff', '#ffc000ff', '#ffbf00ff', '#ffbe00ff', '#ffbd00ff', '#ffbc00ff', '#ffbb00ff', '#ffba00ff', '#ffb900ff', '#ffb800ff', '#ffb700ff', '#ffb600ff', '#ffb500ff', '#ffb400ff', '#ffb300ff', '#ffb200ff', '#ffb100ff', '#ffb000ff', '#ffaf00ff', '#ffae00ff', '#ffad00ff', '#ffac00ff', '#ffab00ff', '#ffaa00ff', '#ffa900ff', '#ffa800ff', '#ffa700ff', '#ffa600ff', '#ffa500ff', '#ffa400ff', '#ffa300ff', '#ffa200ff', '#ffa100ff', '#ffa000ff', '#ff9f00ff', '#ff9e00ff', '#ff9c00ff', '#ff9b00ff', '#ff9a00ff', '#ff9900ff', '#ff9800ff', '#ff9700ff', '#ff9600ff', '#ff9500ff', '#ff9400ff', '#ff9300ff', '#ff9200ff', '#ff9100ff', '#ff9000ff', '#ff8f00ff', '#ff8e00ff', '#ff8d00ff', '#ff8c00ff', '#ff8b00ff', '#ff8a00ff', '#ff8900ff', '#ff8800ff', '#ff8700ff', '#ff8600ff', '#ff8500ff', '#ff8400ff', '#ff8300ff', '#ff8200ff', '#ff8100ff', '#ff8000ff', '#ff7f00ff', '#ff7e00ff', '#ff7d00ff', '#ff7c00ff', '#ff7b00ff', '#ff7a00ff', '#ff7900ff', '#ff7800ff', '#ff7700ff', '#ff7500ff', '#ff7400ff', '#ff7300ff', '#ff7200ff', '#ff7100ff', '#ff7000ff', '#ff6f00ff', '#ff6e00ff', '#ff6d00ff', '#ff6c00ff', '#ff6b00ff', '#ff6a00ff', '#ff6900ff', '#ff6800ff', '#ff6700ff', '#ff6600ff', '#ff6500ff', '#ff6400ff', '#ff6300ff', '#ff6200ff', '#ff6100ff', '#ff6000ff', '#ff5f00ff', '#ff5e00ff', '#ff5d00ff', '#ff5c00ff', '#ff5b00ff', '#ff5a00ff', '#ff5900ff', '#ff5800ff', '#ff5700ff', '#ff5600ff', '#ff5500ff', '#ff5400ff', '#ff5300ff', '#ff5200ff', '#ff5100ff', '#ff5000ff', '#ff4f00ff', '#ff4d00ff', '#ff4c00ff', '#ff4b00ff', '#ff4a00ff', '#ff4900ff', '#ff4800ff', '#ff4700ff', '#ff4600ff', '#ff4500ff', '#ff4400ff', '#ff4300ff', '#ff4200ff', '#ff4100ff', '#ff4000ff', '#ff3f00ff', '#ff3e00ff', '#ff3d00ff', '#ff3c00ff', '#ff3b00ff', '#ff3a00ff', '#ff3900ff', '#ff3800ff', '#ff3700ff', '#ff3600ff', '#ff3500ff', '#ff3400ff', '#ff3300ff', '#ff3200ff', '#ff3100ff', '#ff3000ff', '#ff2f00ff', '#ff2e00ff', '#ff2d00ff', '#ff2c00ff', '#ff2b00ff', '#ff2a00ff', '#ff2900ff', '#ff2800ff', '#ff2600ff', '#ff2500ff', '#ff2400ff', '#ff2300ff', '#ff2200ff', '#ff2100ff', '#ff2000ff', '#ff1f00ff', '#ff1e00ff', '#ff1d00ff', '#ff1c00ff', '#ff1b00ff', '#ff1a00ff', '#ff1900ff', '#ff1800ff', '#ff1700ff', '#ff1600ff', '#ff1500ff', '#ff1400ff', '#ff1300ff', '#ff1200ff', '#ff1100ff', '#ff1000ff', '#ff0f00ff', '#ff0e00ff', '#ff0d00ff', '#ff0c00ff', '#ff0b00ff', '#ff0a00ff', '#ff0900ff', '#ff0800ff', '#ff0700ff', '#ff0600ff', '#ff0500ff', '#ff0400ff', '#ff0300ff', '#ff0200ff', '#ff0100ff', '#ff0000ff']);
+    
+
+    color_map_1a464cb04101f961ea550ac13ee14d95.x = d3.scale.linear()
+              .domain([6.491, 7.647])
+              .range([0, 450 - 50]);
+
+    color_map_1a464cb04101f961ea550ac13ee14d95.legend = L.control({position: 'topright'});
+    color_map_1a464cb04101f961ea550ac13ee14d95.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_1a464cb04101f961ea550ac13ee14d95.legend.addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+
+    color_map_1a464cb04101f961ea550ac13ee14d95.xAxis = d3.svg.axis()
+        .scale(color_map_1a464cb04101f961ea550ac13ee14d95.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([6.491, 7.069, 7.647]);
+
+    color_map_1a464cb04101f961ea550ac13ee14d95.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_1a464cb04101f961ea550ac13ee14d95.g = color_map_1a464cb04101f961ea550ac13ee14d95.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_1a464cb04101f961ea550ac13ee14d95.g.selectAll("rect")
+        .data(color_map_1a464cb04101f961ea550ac13ee14d95.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_1a464cb04101f961ea550ac13ee14d95.x(color_map_1a464cb04101f961ea550ac13ee14d95.color.domain()[i - 1]) : color_map_1a464cb04101f961ea550ac13ee14d95.x.range()[0],
+            x1: i < color_map_1a464cb04101f961ea550ac13ee14d95.color.domain().length ? color_map_1a464cb04101f961ea550ac13ee14d95.x(color_map_1a464cb04101f961ea550ac13ee14d95.color.domain()[i]) : color_map_1a464cb04101f961ea550ac13ee14d95.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_1a464cb04101f961ea550ac13ee14d95.g.call(color_map_1a464cb04101f961ea550ac13ee14d95.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("PM2.5 Levels (\u00b5g/m\u00b3)");
+    
+            var layer_control_cdf99be2c0e8976d8835546f7ccca431_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_a9e9e0f9698056ffd5fd9817a00c2eb2,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_cdf99be2c0e8976d8835546f7ccca431 = L.control.layers(
+                layer_control_cdf99be2c0e8976d8835546f7ccca431_layers.base_layers,
+                layer_control_cdf99be2c0e8976d8835546f7ccca431_layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_d471d95f049356e4d7e40b46a8c7951a);
+
+        
+</script>
+</html>
